@@ -16,7 +16,7 @@
     </tr>
     <th:block th:each="product:${products}">
         <tr>
-            <td th:text="${product.name}"></td>
+            <td><a th:href="@{/view/__${product.id}__}" th:text="${product.name}"></a></td>
             <td th:text="${product.price}"></td>
             <td><a th:href="@{/add/__${product.id}__(action='li')}">Add To Cart</a></td>
         </tr>

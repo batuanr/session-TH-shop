@@ -17,16 +17,19 @@
             <th>Item</th>
             <th>Quantity</th>
             <th>Price</th>
+            <th>Action</th>
         </tr>
         <tr th:each="product: ${cart.products}">
-            <td th:text="${product.getKey().name}"></td>
+            <td ><a th:href="@{/view/__${product.getKey().id}__}" th:text="${product.getKey().name}"></a></td>
             <td>
-                <a id="decrease_button" th:text="${'-'}"></a>
+                <a id="decrease_button" th:href="@{/remove/__${product.getKey().id}__(action='show')}"
+                   th:text="${'-'}"></a>
                 <span th:text="${product.getValue()}"></span>
                 <a id="increase_button" th:href="@{/add/__${product.getKey().id}__(action='show')}"
                    th:text="${'+'}"></a>
             </td>
             <td th:text="${product.getKey().price}"></td>
+            <td><a th:href="@{/remove/__${product.getKey().id}__(action='delete')}">delete</a></td>
         </tr>
         <tr>
             <td>Total</td>
